@@ -1,10 +1,15 @@
 package com.cl.test.controller;
 
+import com.cl.test.entity.AuthRequest;
+import com.cl.test.entity.AuthResponse;
 import com.cl.test.entity.User;
 import com.cl.test.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -16,7 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public Flux<User> getAllUsers() {
+    public Flux<UserDetails> getAllUsers() {
         return userService.getAllUsers();
     }
 
@@ -25,11 +30,7 @@ public class UserController {
         return userService.getUserById(id);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Mono<User> createUser(@Valid @RequestBody User user) {
-        return userService.createUser(user);
-    }
+
 
     @PutMapping("/{id}")
     public Mono<User> updateUser(@PathVariable Long id, @Valid @RequestBody User user) {

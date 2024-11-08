@@ -18,7 +18,6 @@ public class TestController {
     private final TestService testService;
     private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
-
     @GetMapping
     public Flux<Test> getAllTests() {
         logger.info("getAllQuestions");

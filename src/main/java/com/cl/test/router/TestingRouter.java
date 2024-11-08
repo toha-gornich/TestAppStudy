@@ -33,13 +33,8 @@ public class TestingRouter {
                 // Answer management routes
                 .andRoute(POST("/questions/{questionId}/answers").and(accept(APPLICATION_JSON)), testingHandler::addAnswer)
                 .andRoute(PUT("/answers/{id}").and(accept(APPLICATION_JSON)), testingHandler::updateAnswer)
-                .andRoute(DELETE("/answers/{id}").and(accept(APPLICATION_JSON)), testingHandler::deleteAnswer)
+                .andRoute(DELETE("/answers/{id}").and(accept(APPLICATION_JSON)), testingHandler::deleteAnswer);
 
-                .andRoute(GET("/users").and(accept(APPLICATION_JSON)), testingHandler::getAllUsers)
-                .andRoute(GET("/users/{id}").and(accept(APPLICATION_JSON)), testingHandler::getUserById)
-                .andRoute(POST("/users").and(accept(APPLICATION_JSON)), testingHandler::createUser)
-                .andRoute(PUT("/users/{id}").and(accept(APPLICATION_JSON)), testingHandler::updateUser)
-                .andRoute(DELETE("/users/{id}").and(accept(APPLICATION_JSON)), testingHandler::deleteUser);
 
 //                // Test taking and results routes
 //                .andRoute(POST("/api/tests/{id}/start").and(accept(APPLICATION_JSON)), testingHandler::startTest)
